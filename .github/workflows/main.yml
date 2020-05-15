@@ -3,9 +3,6 @@ on: [push]
 jobs:
   deploy_source:
     name: deploy to lambda function
-    strategy:
-      matrix:
-        node-version: [12.x]
     runs-on: ubuntu-latest
     steps:      
       - name: checkout source code
@@ -17,4 +14,4 @@ jobs:
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws_region: us-east-1
           function_name: stringReverser
-          zip_file: bundle.zip
+          source: index.js
